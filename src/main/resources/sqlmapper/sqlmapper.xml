@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.back.dao.MemDao">
+
+	<insert id="insertSignup" parameterType="com.example.back.vo.MemVO"  >
+		INSERT INTO member VALUES (default, #{memId}, #{memPw})
+	</insert>
+
+    <select id="selectMem" parameterType="String" resultType="com.example.back.vo.MemVO">
+        select*from member where memId = #{memId}
+    </select>
+
+    <select id="selectIdCheck" parameterType="String" resultType="Integer">
+        select count(memId) from member where memId = #{memId}
+    </select>
+
+</mapper>
