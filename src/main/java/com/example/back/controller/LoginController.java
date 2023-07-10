@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.example.back.service.MemService;
 import com.example.back.vo.MemVO;
 
+import jakarta.servlet.http.HttpSession;
+
 @Controller
 public class LoginController {
 
@@ -21,14 +23,16 @@ public class LoginController {
     }
 
     @PostMapping("/login")
-    public String login(@RequestParam("memId") String id, @RequestParam("memPw") String pw) {
+    public String login(@RequestParam("memId") String id, @RequestParam("memPw") String pw, HttpSession session) {
+       MemVO login = memService.selectMem(id,pw);
 
-        System.out.println("formID    "+id);
-        System.out.println("formPW    "+pw);
+       if(login ==null) {
+            System.out.println("실패");
+       } else {
+            System.out.println("성공");
+            session.setAttribute("id", login.getMemId());
+       }
        
-       MemVO login = memService.selectMem(id);
-       System.out.println("controllerID    "+login.getMemId());
-        System.out.println("controllerPW   "+login.getMemPw());
 
        return "index";
     }

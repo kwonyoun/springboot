@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>SpringBoot Index</title>
-
+<link rel="stylesheet" type="text/css" href="css/login.css">
 </head>
 <body>
 
