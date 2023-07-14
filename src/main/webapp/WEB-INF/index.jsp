@@ -1,7 +1,8 @@
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -140,6 +141,24 @@
 			<div id="hot_item"> <!-- hot item 시작 -->
 
 				<p id="hot_txt">가장 먼저 살펴보세요</p>
+
+				<div class="menu1">   <!--한줄-->
+					<c:set var="start" value="1" />
+					<c:set var="end" value="8" />
+
+					<c:forEach var="vo" items="${vo}">
+					<div id="prod_wrap" >
+						<ul class="img_ul">
+							<li><a href="/prod?prodNum=${vo.prodNum}">
+							<img style="width: 240px; height: 240px;" 
+							src="/img/${vo.prodImg}"></a></li>
+						</ul>
+						<ul class="info_ul">
+							<li>${vo.prodName}
+						</li></ul></div>
+				</c:forEach>
+				</div>
+			</div>
 
 				
 

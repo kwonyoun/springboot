@@ -10,7 +10,10 @@ import com.example.back.vo.CsQnaVO;
 //mapper의 dao는 xml로 간다.
 
 @Mapper
-public interface CsDao {
+public interface CsQnaDao {
     public Integer insertQna(CsQnaVO qna);
     public ArrayList<CsQnaVO> selectQna();
+    public CsQnaVO  selectQnaView(int qnanum);
+    public void deleteQna(int qnanum);
+    public void updateQna(CsQnaVO before);
 }

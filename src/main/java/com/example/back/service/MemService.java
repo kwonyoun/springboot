@@ -14,10 +14,8 @@ public class MemService {
 
     //회원가입
     public Integer insertSignup(MemVO member) {
-
         Integer mem = dao.insertSignup(member);
         System.out.println("memsvc    "+mem);
-
         return mem;
     }
 

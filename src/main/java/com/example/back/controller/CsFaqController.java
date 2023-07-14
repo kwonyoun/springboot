@@ -5,7 +5,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.example.back.service.MemService;
-import com.example.back.vo.*;
 
 @Controller
 public class CsFaqController {

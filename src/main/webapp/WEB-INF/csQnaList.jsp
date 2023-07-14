@@ -119,19 +119,28 @@
                     <div class="count">답변상황</div>
                     <div class="date">문의일</div>
                 </div>
-
+<div>
 
 <!-- foreach 문으로 컬렉션 반복 처리 -->
 <c:forEach var="item" items="${qnalist}">
-  ${item.qnaCon}
+   <div class="num">${item.qnaNum} </div>
+   <div class="title">
+      <a href="/cscenter/qna/view?qnaNum=${item.qnaNum}">
+         <c:if test="${item.qnaOpen eq 'private'}">
+         <img src="/img/lock.png" alt="ffffffffff" style="width: 12px; height: 12px;" >
+         </c:if>${item.qnaTitle}
+      </a>
+    
+    
+   </div>
+   <div class="writer">${item.qnaMemId}</div>
+   <div class="writer">${item.qnaOpen}</div>
+   <div class="date">${item.qnaDate}</div>
 </c:forEach>
-                
-                
 
-           
-            
-            
-       
+</div>
+                
+                
             <div class="bt_wrap">
                 <a href="/cscenter/qna/write" class="on" >등록</a>
                 <!--<a href="#">수정</a>-->

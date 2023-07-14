@@ -21,7 +21,7 @@
     <header >
             
             <div class="hdwrap1">
-                <div class="ftwrap1"><a href="/"><img src="img/bully.jpg" height="90px"style="padding-left: 20px; margin-top: 22px;"  ></a>
+                <div class="ftwrap1"><a href="/"><img src="/img/bully.jpg" height="90px"style="padding-left: 20px; margin-top: 22px;"  ></a>
                     <div class="ftwrap2"></div>
                     <div class="search-wrapper active">
 <!--                       <div class="input-holder"> -->
@@ -44,7 +44,7 @@
                         <a href="/login">로그인</a>
                        
                         </li> 
-                        <li class="login_false"><a href="join001.jsp">회원가입</a></li>    
+                        <li class="login_false"><a href="/signup">회원가입</a></li>    
                         <li class="login_true">
                         
                          <%} else{ 
