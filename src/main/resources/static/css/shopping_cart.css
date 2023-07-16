@@ -1,0 +1,152 @@
+*{
+    margin: 0;
+    padding: 0;
+ 
+     font-family: 'TheJamsil3Regular';
+ 
+}
+
+
+a {
+    text-decoration: none;
+    color: #333;
+ }
+
+ ul,li{
+    list-style: none;
+ }
+ 
+ section {
+ 	min-height: 513px;
+ }
+
+
+ section div#s_order{
+    width: 1136px;
+    margin: 0 auto;
+	
+ }
+
+section div#s_order ul{
+	display: flex;
+	justify-content: flex-end;
+	margin-top: 30px;
+	margin-bottom: 50px
+	
+}
+
+section div#s_order ul li{
+	margin-right: 20px;
+	margin-left: 20px;
+	
+}
+
+section div#s_order ul li:nth-child(2), div#s_order ul li:nth-child(3) {
+	opacity: 70%;
+}
+
+/* =============== table.css 시작 =============== */
+
+section table {
+	width: 1136px;
+	margin: 0 auto;
+	margin-bottom: 50px;
+	border-collapse: collapse;
+	
+}
+
+section table #s_basket{
+	height: 50px;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+}
+
+section table .s_basket_prod td{
+	text-align: center;
+	height: 40px;
+}
+
+
+
+/*//////////////////////////////아래는 shopping_cart_direct.jsp의 css ////////////////////////////*/
+#shopping_total_price_info_wrap{
+	width: 100%;
+	margin-bottom: 50px;
+	
+}
+
+#shopping_total_price_info_wrap .shopping_total_price_info{
+	width: 1020px;
+	height: 155px;
+/*     background-color: blue; */
+    margin: 0 auto;
+}
+
+#shopping_total_price_info_wrap .total_price_info{
+	float: left;
+    background-color: white;
+    width: 33.13%;
+/*     margin: 0 auto; */
+    line-height: 150px;
+    text-align: center;
+    
+    border-top-style: solid;
+    border-top-color: #7E7DCB;
+    
+    border-left-style: solid ;
+    border-left-color: gray;
+    border-left-width: 1px;
+    
+}
+
+#shopping_total_price_info_wrap #priceinfowrap{
+	margin: 0 auto;
+}
+
+
+#shopping_total_price_info_wrap .total_price_info:nth-child(3){
+    border-top-style: solid;
+    border-top-color: #7E7DCB;
+    
+    border-right-style: solid ;
+    border-right-color: gray;
+    border-right-width: 1px; 
+}
+
+#shopping_total_price_info_wrap .sum_price{
+	width: 1000px;
+    height: 150px;
+/*     background-color: beige; */
+    border-top-style: solid;
+    border-color: #7E7DCB;
+    line-height: 150px;
+    padding: 0 10px 0 10px;
+    margin: 0 auto;
+}
+
+.sum_price span:nth-child(2){
+	float: right;	
+}
+
+/*............................ 카드 바로가기 속 선택주문/전체주문 버튼 css 시작 .............................*/
+
+#order_btn_wrap{
+    width: 230px;
+    margin: 0 auto;
+}
+
+#order_btn_wrap button{
+	width: 100px;
+	height: 50px;
+	
+}
+
+#order_btn_wrap button[type="submit"] {
+	margin-right: 10px;
+}
+
+/*............................ 카드 바로가기 속 선택주문/전체주문 버튼 css 끝 .............................*/
+
+
+
+

@@ -32,8 +32,7 @@ public class LoginController {
             System.out.println("성공");
             session.setAttribute("id", login.getMemId());
        }
-       
 
-       return "index";
+       return "redirect:";
     }
 }

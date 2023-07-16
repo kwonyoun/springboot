@@ -87,15 +87,13 @@
 			
 			
 			
-			<form action="/cart" id ="myForm" >  
+			<form action="/cart" id ="myForm" method="post" >  
 
 				<% String memid = (String)session.getAttribute("id"); %>
 			
-				<input type="hidden" name = "prodMemId" value = "" >
-				<input type="hidden" name = "prodNum" value = "${vo.prodNum}">
-				<input type="hidden" name = "prodImg" value ="${vo.prodImg}" >
-				<input type="hidden" name = "prodOpbct" value ="" >
-				<input type="hidden" name = "prodOpsct" value ="" >
+				
+				<input type="hidden" name = "cartProdNum" value = "${vo.prodNum}">
+				<input type="hidden" name = "cartMemId" value = "<%=memid%>" >
 			
 			<table>
 				<tr>
@@ -103,7 +101,7 @@
 					
 					<td>
 						<span>
-							<input class="input-border-none" id="prod_price" name="prodPrice" value="${vo.prodPrice}" readonly="readonly" >
+							<input class="input-border-none" id="prod_price" name="cartProdPri" value="${vo.prodPrice}" readonly="readonly" >
 						</span>
 					</td>
 					
@@ -116,7 +114,7 @@
 				
 				<div id="quantity_wrap">
 				
-					<input type="text" id="quantity" class="qunt_up" name="prodQuantity" value="1" min="1">
+					<input type="text" id="quantity" class="qunt_up" name="cartProdQaun" value="1" min="1">
 					
 						<div id="count_btn_wrap" >
 							<a href="#" onclick="increaseQuantity(event)">

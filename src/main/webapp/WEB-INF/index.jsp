@@ -21,13 +21,13 @@
     <jsp:include page="header.jsp" />
 
     <div id="section_wrap">
-
+		<% String memid = (String)session.getAttribute("id"); %>
 	<section>
 	
 		<div id="shopping_quickmenu_wrap" >
 				<div class="s_quickmenu" >
 <!-- 					<a href="shopping_cart_direct.do" ><img alt="cartimg" src="img/cart.png" style="width: 50px; height: 50px;" >장바구니</a> -->
-					<a href="shopping_cart.do" onclick="gotologin()" ><img alt="cartimg" src="img/cart.png" style="width: 50px; height: 50px;" >장바구니</a>
+					<a href="/cart/list?ID=<%=memid %>" onclick="gotologin()" ><img alt="cartimg" src="img/cart.png" style="width: 50px; height: 50px;" >장바구니</a>
 				</div>
 			
 <!-- 				<div class="s_quickmenu"> -->

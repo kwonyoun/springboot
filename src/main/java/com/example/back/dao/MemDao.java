@@ -8,9 +8,7 @@ import com.example.back.vo.MemVO;
 public interface MemDao {
 
     public Integer insertSignup(MemVO mem);
-
     public MemVO selectMem(String loginmem);
-
     public Integer selectIdCheck(String idcheck);
 
 
