@@ -1,0 +1,227 @@
+@charset "UTF-8";
+
+*{
+    margin: 0;
+    padding: 0;
+ 
+     font-family: 'TheJamsil3Regular';
+ 
+}
+
+
+a {
+    text-decoration: none;
+    color: #333;
+ }
+
+ ul,li{
+    list-style: none;
+ }
+
+ 
+ /*////////////////////////////////*/
+ 
+ section{
+ 	width: 100%;
+ 	overflow:hidden;
+ 	
+ }
+ 
+ /*////////////////////////////////*/
+ 
+ section #shopping_buy_wrap{
+ 	width: 1136px;
+ 	margin: 0 auto;
+ }
+ 
+ section div#s_order{
+    width: 1136px;
+    margin: 0 auto;
+	
+ }
+
+section div#s_order ul{
+	display: flex;
+	justify-content: flex-end;
+	margin-top: 30px;
+	margin-bottom: 50px
+	
+}
+
+section div#s_order ul li{
+	margin-right: 20px;
+	margin-left: 20px;
+	
+}
+
+section div#s_order ul li:first-child, div#s_order ul li:nth-child(3) {
+	opacity: 70%;
+}
+
+section #shopping_pay_wrap{
+	margin-bottom: 50px;
+}
+
+section table.order_list_table{
+	width: 80%;
+	margin: 0 auto;
+}
+
+section .shopping_addr_info{
+	width: 80%;
+	margin: 0 auto;
+}
+
+section table.order_list_table tr th{
+	font-size: 20px;
+	height: 70px;
+	
+}
+
+section table.order_list_table td{
+	text-align: center;
+}
+section .shopping_addr_info tr{
+	height: 50px;
+	
+}
+
+section .shopping_addr_info th{
+	width: 20%;
+	background-color: rgb(105 105 105 / 20%) ;
+}
+
+section #mem_name_input{
+    width: 100px;
+    margin-right: 15px;
+    padding-left: 7px;
+}
+
+section .shopping_addr_info td, input[type="text"]{
+	width: 100%;
+	height: 30px;
+	
+}
+
+section #card_company_select{
+	height: 35px;
+	width: 20%
+}
+
+section input[type="text"]{
+	padding-left: 7px;	
+	
+}
+
+section #ord_ask_detail{
+    width: 98%;
+	height: 25px;
+}
+
+section input#sample6_postcode {
+	width: 200px;
+}
+
+section #sample6_address {
+	width: 414px;
+}
+
+section #sample6_detailAddress ,#sample6_extraAddress {
+	width: 200px;
+}
+
+section .ord_mobile_size{
+	width: 40px;
+/* 	text-align: center; */
+}
+
+
+/* //////////////////////////////////  */
+
+section form h2{
+	width: 80%;
+	margin: 0 auto;
+	margin-bottom: 10px;
+}
+ 
+/* //////////////////////////////////  */
+
+
+section #order_payway #order_payway_wrap #order_radio_wrap{
+	width: 80%;
+	margin: 0 auto;
+}
+
+section #order_payway #order_payway_wrap #paymethod2_wrap, #credit_card_wrap{
+	width: 80%;
+	margin: 0 auto;
+}
+
+section #order_list_wrap, #order_addr_wrap, #order_ask_wrap, #order_payway{
+	margin-bottom: 50px;
+}
+
+section #credit_card_wrap th{
+	width: 20%;
+    background-color: rgb(105 105 105 / 20%) ;
+}
+section #credit_card_wrap td{
+	width: 100%;
+    height: 30px;
+}
+
+section #kakaopay_note{
+	width: 80%;
+    margin: 20px auto 0 auto;
+}
+
+section #credit_card_wrap{
+	width: 80%;
+    margin: 0 auto;
+}
+
+section #credit_card_wrap tr{
+	height: 50px;
+}
+/* /////////////////////////////////  */
+
+.payway_class{
+	margin-right: 40px;
+    width: 100px;
+    margin-bottom: 10px;
+    float: left;
+}
+
+.payway_class input {
+	margin-right: 10px;
+}
+
+input#save_button{
+	    background-color: #7E7DCB;
+    color: white;
+    padding: 0 20px;
+    border-radius: 5px;
+    margin-left: 5px;
+    height: 30px;
+    border-style: none;
+}
+
+input#addrName{
+	display: inline-block;
+    width: 414px;
+    margin-top: 3px;
+}
+
+/* /////////////////////////////////  */
+
+section #pay_wrap{
+	width: 100px;
+	margin: 0 auto;
+}
+
+section #pay_wrap input{
+	width: 100px;
+	height: 30px;
+}
+
+

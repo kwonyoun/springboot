@@ -237,8 +237,22 @@
 				    window.location.href = 'shopping_cart.do';
 				  }
 				</script>
-				
-				<a href="#" onclick="buyProduct()"  class="prod_buy" >구매하기</a>
+
+				<script>
+				function payfunction() {
+						// alert("success");
+					/* 바로구매 버튼 */
+					$(".prod_buy").on("click", function(){
+						let bookCount = $(".qunt_up").val();
+						window.location.href = "/order?memId=<%=memid%>&prodNum=${vo.prodNum}&ordQuan="+bookCount;
+					});
+				}
+
+				</script>
+
+				<!-- <a href="/pay?memId=<%=memid%>&ordQuan=" class="prod_buy" >구매하기</a> -->
+				<!-- <button class="prod_buy" value="구매하기" >구매하기</button> -->
+				<a onclick="payfunction()" class="prod_buy" >구매하기</a>
 
 				
 			</div>

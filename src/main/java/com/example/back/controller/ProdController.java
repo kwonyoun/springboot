@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.example.back.service.ProdService;
 import com.example.back.vo.ProdVO;
 
+import jakarta.servlet.http.HttpSession;
+
 @Controller
 public class ProdController {
 
@@ -16,7 +18,7 @@ public class ProdController {
     ProdService svc;
 
     @GetMapping("/prod")
-    public String showProd(Model model, @RequestParam("prodNum") int prodnum) {
+    public String showProd(Model model, @RequestParam("prodNum") int prodnum, HttpSession session) {
         ProdVO vo = svc.selectProd(prodnum);
         model.addAttribute("vo", vo);
         return "prodView";

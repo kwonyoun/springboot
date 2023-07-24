@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.back.dao.OrderDao">
+
+	<select id="selectMeminfo" parameterType="String" resultType="com.example.back.vo.MemVO" >
+		SELECT * FROM member WHERE memId= #{memId}
+	</select>
+
+	<select id="selectOrdProd" parameterType="String" resultType="com.example.back.vo.ProdVO" >
+		SELECT * FROM prodinfo WHERE prodnum= ${prodnum}
+	</select>
+
+	<!-- <insert id="insertOrder" parameterType="String, int, int" >
+		INSERT INTO ordinfo values (default,(SELECT memName FROM member WHERE memId=#{memId}), (SELECT memMobile FROM member WHERE memId=#{memId}),(SELECT memAddr FROM member WHERE memId=#{memId}), #{cartMemId} )
+	</insert> -->
+
+</mapper>

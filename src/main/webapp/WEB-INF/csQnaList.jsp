@@ -62,7 +62,7 @@
                <div class="cscenter_menu" >
                
                   <div class="cscenter_menu_txt">         
-                     <p style="margin-left: 30px;"><a href="cscenter_not_list.do" >공지사항</a></p>
+                     <p style="margin-left: 30px;"><a href="/csNotice" >공지사항</a></p>
                   </div>   
                
                </div>
@@ -70,7 +70,7 @@
                <div class="cscenter_menu" >
                
                   <div class="cscenter_menu_txt">         
-                     <p><a href="cscenter_faq.jsp">자주하는 질문</a></p>
+                     <p><a href="/cscenter">자주하는 질문</a></p>
                   </div>
                
                </div>
@@ -78,7 +78,7 @@
                <div class="cscenter_menu" >
                
                   <div class="cscenter_menu_txt">         
-                     <p><a href="cscenter_qna_list.do">직접 문의하기</a></p>
+                     <p><a href="/cscenter/qnalist">직접 문의하기</a></p>
 
                   </div>
                   
@@ -127,7 +127,7 @@
    <div class="title">
       <a href="/cscenter/qna/view?qnaNum=${item.qnaNum}">
          <c:if test="${item.qnaOpen eq 'private'}">
-         <img src="/img/lock.png" alt="ffffffffff" style="width: 12px; height: 12px;" >
+         <img src="/img/lock.png" alt="fail" style="width: 12px; height: 12px;" >
          </c:if>${item.qnaTitle}
       </a>
     

@@ -60,14 +60,14 @@
 			
 					<div class="cscenter_menu" >		
 						<div class="cscenter_menu_txt">			
-							<p style="margin-left: 30px;"><a href="cscenter_not_list.do" >공지사항</a></p>
+							<p style="margin-left: 30px;"><a href="/csNotice" >공지사항</a></p>
 						</div>						
 					</div>
 					
 					<div class="cscenter_menu" >
 					
 						<div class="cscenter_menu_txt">			
-							<p><a href="/csFaq">자주하는 질문</a></p>
+							<p><a href="/cscenter">자주하는 질문</a></p>
 						</div>
 						<div class="triangle"></div>
 					
