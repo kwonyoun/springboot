@@ -1,8 +1,6 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-    
-    <%@ page import = "java.util.ArrayList" %>
-    
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,6 +9,73 @@
 
 <link rel="stylesheet" href="/css/shopping_order.css">
 <script	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
+<!-- jQuery -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+<!-- iamport.payment.js -->
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+
+<script>
+	
+
+	//결제 요청하기
+	function requestPay() {
+		//객체 초기화하기
+		IMP.init("iamport"); // 예: imp00000000a
+		IMP.request_pay({
+			pg: "inicis", //inicis로 하기,,
+			pay_method: "card",
+			merchant_uid: 'merchant_'+new Date().getTime(),   // 주문번호
+			name: "test",
+			amount: 1,                         // 숫자 타입
+			buyer_email: "gildong@gmail.com",
+			buyer_name: "홍길동",
+			buyer_tel: "010-4242-4242",
+			buyer_addr: "서울특별시 강남구 신사동",
+			buyer_postcode: "01181"
+		}, function (rsp) { // callback
+			if ( rsp.success ) {
+				var msg = '결제가 완료되었습니다.';
+				msg += '고유ID : ' + rsp.imp_uid;
+				msg += '상점 거래ID : ' + rsp.merchant_uid;
+				msg += '결제 금액 : ' + rsp.paid_amount;
+				msg += '카드 승인번호 : ' + rsp.apply_num;
+			} else {
+				var msg = '결제에 실패하였습니다.';
+				msg += '에러내용 : ' + rsp.error_msg;
+			}
+			alert(msg);
+		//rsp.imp_uid 값으로 결제 단건조회 API를 호출하여 결제결과를 판단합니다.
+		},
+		
+
+		
+		);
+
+		IMP.request_pay({ /** 요청 객체를 추가해주세요 */ },
+		rsp => {
+			if (rsp.success) {   
+			// axios로 HTTP 요청
+			axios({
+				url: "/requestpay",
+				method: "post",
+				headers: { "Content-Type": "application/json" },
+				data: {
+				imp_uid: rsp.imp_uid,
+				merchant_uid: rsp.merchant_uid
+				}
+			}).then((data) => {
+				// 서버 결제 API 성공시 로직
+			})
+			} else {
+			alert(`결제에 실패하였습니다. 에러 내용: ${rsp.error_msg}`);
+			}
+		});
+
+
+	}
+</script>
+
 </head>
 
 <body>
@@ -19,8 +84,7 @@
 
 <section>
 
-	<form action="shopping_complete.do" >
-		
+
 		<div id="shopping_buy_wrap" >
 			<div id="s_order" >
 				<ul>
@@ -409,230 +473,6 @@ function newAddrInput() {
 						    }
 							
 							</script>
-							
-							<script>
-							//결제방식 선택
-							  //신용카드 클릭 시 
-								    // Get the payment method and credit card company select elements
-								    const paywayRadios = document.querySelectorAll('input[name="payway"]');
-								    const creditCardWrap = document.getElementById('credit_card_wrap');
-								
-								    // Add a change event listener to the payment method radio buttons
-								    for (let i = 0; i < paywayRadios.length; i++) {
-								        paywayRadios[i].addEventListener('change', () => {
-								            if (paywayRadios[i].value === '신용카드') {
-								                creditCardWrap.style.display = 'block';
-								            } else {
-								                creditCardWrap.style.display = 'none';
-								            }
-								        });
-								    }
-
-								    //무통장입금 클릭 시 
-									$(document).ready(function() {
-									  $('input[name="payway"]').change(function() {
-									    if ($(this).val() == '무통장입금') {
-									      $('#paymethod2_wrap').show();
-									    } else {
-									      $('#paymethod2_wrap').hide();
-									    }
-									  });
-									});
-								    
-									//카카오페이 클릭 시 
-									$(document).ready(function() {
-									  $('input[name="payway"]').change(function() {
-									    if ($(this).val() == '카카오페이') {
-									      $('#kakaopay_wrap').show();
-									    } else {
-									      $('#kakaopay_wrap').hide();
-									    }
-									  });
-									});
-							</script>
-							
-							<script>
-							//'radio' 클릭 시 실행되는 js. (구현 안됨..ㅎ 일단 보류)
-//// 						$(document).ready(function()
-//// 						{
-//// 						    $("input:radio[id=existing_addr]").click(function()
-//// 						    {
-//// 						    	toggleInput();
-//// 						    })
-//						    
-//// 						    $("input:radio[id=new_addr]").click(function()
-//// 						    {
-//// 						    	toggleInput();
-//// 						    })
-//// 						});
-							</script>
-							
-						</div>
-					</div>
-	
-					<div id="order_ask_wrap">
-
-						<div id="order_ask_title">
-							<h2>배송 요청사항</h2>
-						</div>
-
-						<div id="order_ask_con">
-
-							<table class="shopping_addr_info">
-
-								<tr>
-									<th>배송 메시지</th>
-
-									<td>
-										<!-- <input type="checkbox" value="" >  --> <select
-										name="ord_ask" onchange="showAskDetail()" style="height: 35px; width: 50%;" >
-											<option>배송메시지를 선택해주세요.</option>
-											<option>부재시 경비실에 맡겨주세요.</option>
-											<option>부재시 문앞에 놓아주세요.</option>
-											<option>파손의 위험이 있는 상품이오니, 배송시 주의해주세요.</option>
-											<option>배송 전에 연락주세요.</option>
-											<option>택배함에 넣어주세요.</option>
-											<option>직접 입력하기</option>
-
-									</select>
-
-									</td>
-								</tr>
-
-								<tr id="askDetailRow" style="display: none">
-									<th>기타상세내용</th>
-									<td><input type="text" id="ord_ask_detail"
-										name="ord_ask_detail" value=""></td>
-								</tr>
-
-							</table>
-
-							<script>
-							  function showAskDetail() {
-							    var askSelect = document.getElementsByName("ord_ask")[0];
-							    var askDetailRow = document.getElementById("askDetailRow");
-							    if (askSelect.value === "직접 입력하기") {
-							      askDetailRow.style.display = "table-row";
-							    } else {
-							      askDetailRow.style.display = "none";
-							    }
-							  }
-							</script>
-
-						</div>
-
-					</div>
-	
-					<div id="order_payway">
-
-						<div id="order_payway_title">
-							<h2>결제수단 선택</h2>
-						</div>
-
-						<div id="order_payway_wrap">
-
-							<div id="order_radio_wrap">
-								<div class="payway_class">
-									<input type="radio" name="payway" value="신용카드">신용카드
-								</div>
-								<div class="payway_class">
-									<input type="radio" name="payway" value="무통장입금">무통장입금
-								</div>
-								<div class="payway_class">
-									<input type="radio" name="payway" value="카카오페이">카카오페이
-								</div>
-								<div class="payway_class">
-									<input type="radio" name="payway" value="네이버페이">네이버페이
-								</div>
-								<div class="payway_class">
-									<input type="radio" name="payway" value="휴대폰결제">휴대폰결제
-								</div>
-								<div class="payway_class">
-									<input type="radio" name="payway" value="문화상품권">문화상품권
-								</div>
-							</div>
-							
-							<script>
-  
-							</script>
-							
-							
-							<div class="wrap_all" id="wrap_all" >
-							<table id="credit_card_wrap" >
-								<tr>
-									<th>신용카드</th>
-
-									<td><select id="card_company_select" name="card_select">
-											<option>-</option>
-											<option value="국민카드">국민카드</option>
-											<option value="신한카드">신한카드</option>
-											<option value="삼성카드">삼성카드</option>
-											<option value="하나카드">하나카드</option>
-											<option value="롯데카드">롯데카드</option>
-									</select></td>
-								</tr>
-
-								<tr>
-									<th>할부종류</th>
-									<td><select name="card_installment" style="width: 20%; height: 35px;" >
-											<option value="-">-</option>
-											<option value="일시불">일시불</option>
-											<option value="2개월">2개월</option>
-											<option value="3개월">3개월</option>
-											<option value="4개월">4개월</option>
-											<option value="5개월">5개월</option>
-											<option value="6개월">6개월</option>
-									</select></td>
-								</tr>
-							</table>
-
-<!-- 							<div id="paymethod2_wrap"> -->
-<!-- 								<div> -->
-<!-- 									<label for="without_bankbook">은행명</label> <select -->
-<!-- 										id="without_bankbook" name="paymethod2"> -->
-<!-- 										<option>-</option> -->
-<!-- 										<option>기업</option> -->
-<!-- 										<option>국민</option> -->
-<!-- 										<option>농협</option> -->
-<!-- 										<option>수협</option> -->
-<!-- 										<option>우리</option> -->
-<!-- 										<option>하나</option> -->
-<!-- 										<option>신한</option> -->
-<!-- 									</select> -->
-<!-- 								</div> -->
-
-<!-- 								<div> -->
-<!-- 									<label>입금기한</label> -->
-<!-- 									<div> -->
-<!-- 										<input type="text" id="deposit_deadline"> -->
-<!-- 									</div> -->
-<!-- 								</div> -->
-
-<!-- 								<script> -->
-<!-- // 								  // 현재 시간에서 24시간을 더한 시간 계산 -->
-<!-- // 								  const now = new Date(); -->
-<!-- // 								  const expiryTime = new Date(now.getTime() + 24 * 60 * 60 * 1000); -->
-								
-<!-- // 								  // input의 value 속성에 시간 할당 -->
-<!-- // 								  const input = document.getElementById('deposit_deadline'); -->
-<!-- // 								  input.value = expiryTime.toLocaleString();  // 날짜 포맷을 설정할 수 있습니다. -->
-<!-- 								</script> -->
-
-<!-- 								<div> -->
-<!-- 									입금자명 -->
-
-<!-- 								</div> -->
-
-<!-- 							</div> -->
-
-<!-- 							<div id="kakaopay_wrap"> -->
-<!-- 								<div id="kakaopay_note"> -->
-<!-- 									<span> 무이자할부는 카카오페이 모바일 결제창에서 선택하실 수 있습니다. 휴대폰과 카드명의자가 -->
-<!-- 										동일해야 결제 가능합니다. 카카오페이 결제 시, 제휴카드 할인/적립(CJ카드, CJ iD카드, 임직원할인 -->
-<!-- 										포함)이 적용되지 않습니다. 카드 영수증 및 현금영수증 확인은 카카오페이 홈페이지에서 확인 -->
-<!-- 										가능합니다.(카카오페이 홈 > 설정 > 결제내역) 카카오페이 고객센터 : 1644-7405 </span> -->
-<!-- 								</div> -->
-<!-- 							</div> -->
 
 						</div>
 						
@@ -641,12 +481,17 @@ function newAddrInput() {
 	
 	
 					<div id="pay_wrap">
-						<input type="submit" value="결제하기">
+						<!-- <input type="submit" value="결제하기"> -->
+						
+						<!-- 결제하기 버튼 생성 -->
+						<button onclick="requestPay()">결제하기</button>
+    
 					</div>
+
+					
 
 				</div>
 		</div>
-	</form>
 	
 </section>
 
