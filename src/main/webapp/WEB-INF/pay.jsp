@@ -37,8 +37,8 @@
                     type : 'post',
                     url : '/paySuccess',
                     data : {
-                        "ID" : data.buyer_email, 
-                        "amount" : data.paid_amount},
+                        "imp_uid" : data.imp_uid, 
+                        "paid_amount" : data.paid_amount},
                 });
                 
             }else{
@@ -46,7 +46,7 @@
                 msg += "에러 내용" + rsp.error_msg;
             }
             alert(msg);
-            document.location.href="/verifyiamport/";
+            document.location.href="/verifyiamport/"+data.imp_uid;
         });
 
         }
