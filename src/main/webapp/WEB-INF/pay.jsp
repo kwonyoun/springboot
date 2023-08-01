@@ -38,15 +38,26 @@
                     url : '/paySuccess',
                     data : {
                         "imp_uid" : data.imp_uid, 
-                        "paid_amount" : data.paid_amount},
+                        "paid_amount" : data.paid_amount
+                    },
+                    success: function(res) {
+                        alert("ajax-success   "+res);
+                        document.location.href="/payInfo/"+res;
+                        
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(error);
+                    }
                 });
+                alert(msg);
                 
             }else{
                 var msg = "결제 실패"
                 msg += "에러 내용" + rsp.error_msg;
+                alert(msg);
+                document.location.href="/pay";
             }
-            alert(msg);
-            document.location.href="/unitpay/"+data.imp_uid;
+            
         });
 
         }

@@ -91,7 +91,7 @@ public class ImportController {
 
     @GetMapping("/unitpay/{imp_uid}")
 	public String paySuccessInfo(@PathVariable(value = "imp_uid") String imp_uid, Model model ){
-        System.out.println("heresssssssss");
+        System.out.println("fdgdfgfdgdsgsgsfdgsdg");
         StringBuffer result = new StringBuffer();
         String jsonPrintString = null;
 
@@ -113,14 +113,14 @@ public class ImportController {
             }
             jsonPrintString = result.toString();
             JSONObject json = new JSONObject(jsonPrintString);
-            String amount = json.getJSONObject("response").getString("amount");
+            int amount = json.getJSONObject("response").getInt("amount");
             String buyer_name = json.getJSONObject("response").getString("buyer_name");
             String emb_pg_provider = json.getJSONObject("response").getString("emb_pg_provider");
             String status = json.getJSONObject("response").getString("status");
             String buyer_addr = json.getJSONObject("response").getString("buyer_addr");
 
+            System.out.println("stringbuilder       "+amount);
 
-            
             // accessToken = json.getJSONObject("response").getString("access_token");
 
         } catch (Exception e) {

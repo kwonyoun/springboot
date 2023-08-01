@@ -4,16 +4,13 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.example.back.vo.PayinfoVO;
+
 @Mapper
-public interface UserDao {
+public interface PayDao {
     
     //Dao
-    public void paid(Map<String, Object> map) ;
-
-    public void rePaid(Map<String, Object> map) ;
-
-    public String paidCheck(String ID) ;
-
     public void paySuccess(Map<String, Object> map);
+    public PayinfoVO payInfoSelect(String uid);
     
 }
