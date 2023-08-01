@@ -46,7 +46,7 @@
                 msg += "에러 내용" + rsp.error_msg;
             }
             alert(msg);
-            document.location.href="/verifyiamport/"+data.imp_uid;
+            document.location.href="/unitpay/"+data.imp_uid;
         });
 
         }

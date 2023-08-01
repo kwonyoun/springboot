@@ -25,5 +25,9 @@ public class UserService {
     public String paidCheck(String ID) {
         return userDao.paidCheck(ID);
     }  
+
+    public void paySuccess(Map<String, Object> map){
+        userDao.paySuccess(map);
+    };
     
 }

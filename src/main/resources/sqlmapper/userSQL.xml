@@ -21,5 +21,9 @@
         from USER
         where USER_ID = "kwon"
     </select>
+
+    <insert id="paySuccess" >
+        insert into payinfo values(default, ${amount}, #{imp_uid} )
+    </insert>
     
 </mapper>

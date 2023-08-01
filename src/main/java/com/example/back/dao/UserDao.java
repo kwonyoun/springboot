@@ -13,5 +13,7 @@ public interface UserDao {
     public void rePaid(Map<String, Object> map) ;
 
     public String paidCheck(String ID) ;
+
+    public void paySuccess(Map<String, Object> map);
     
 }
